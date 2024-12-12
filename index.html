@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Поисковод</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px; 
+background-image:url('https://upload.wikimedia.org/wikipedia/commons/c/c7/Mount_Elbrus_May_2008.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+            justify-content: center;
+            user-select:none;
+        }
+        h1, h2 {
+            color: white;
+        }
+        select, input, button {
+            margin: 5px;
+            border-radius: 10px;
+            padding: 5px;
+            width: 90%;
+            background: white;
+            box-sizing: border-box;
+            border: none;
+            font-size: 15px;
+            height: 2.5rem;
+            outline: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            user-select: none;
+        }
+        button:active {
+            transform: scale(1.1);
+            transition: all 0.1s;
+        }
+        hr {
+            width: 90%;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h1>Поисковод</h1> 
+    <br>
+    <select id="searchEngine">
+ <option value="yandex">Яндекс</option> <option value="google">Google</option>
+ <option value="mailru">Mail.Ru</option> 
+<option value="rambler">Рамблер</option> <option value="wikipedia">Википедия</option> 
+    <option value="youtube">YouTube</option>
+    <option value="duckduckgo">DuckDuckGo</option> 
+<option value="yahoo">Yahoo</option> </select> 
+    <input type="search" id="searchTerm" placeholder="Введите ваш запрос">
+    <button onclick="search()">ПОИСК</button> 
+    <hr>
+    <hr>
+    <h2>Рекомендации</h2>
+    <form action="https://ruwiki.ru" target="_blank">
+        <button>РуВики</button>
+    </form>
+    <form action="https://ozon.ru" target="_blank">
+        <button>Ozon</button>
+    </form>
+    <form action="https://zaycev.net" target="_blank">
+        <button>Зайцев.Нет</button>
+    </form>
+    <form action="https://ria.ru" target="_blank">
+        <button>РИА Новости</button>
+    </form>
+    <script>
+        function search() {
+            const searchTerm = document.getElementById('searchTerm').value; const selectedEngine = document.getElementById('searchEngine').value; let searchUrl = ''; 
+switch (selectedEngine) {
+                case 'yandex': searchUrl = `https://ya.ru/search/touch/?text=${searchTerm}`; break; 
+case 'google': searchUrl = `https://www.google.ru/search?q=${searchTerm}`; break;
+ case 'mailru': searchUrl = `https://go.mail.ru/search?q=${searchTerm}`; break; 
+case 'rambler': searchUrl = `https://nova.rambler.ru/search?query=${searchTerm}`; break; 
+case 'wikipedia': searchUrl = `https://ru.m.wikipedia.org/w/index.php?search=${searchTerm}`; break; case 'youtube': searchUrl = `https://www.youtube.com/results?search_query=${searchTerm}`; break; case 'duckduckgo': searchUrl = `https://duckduckgo.com/?q=${searchTerm}`; break; 
+case 'yahoo': searchUrl = `https://search.yahoo.com/search?p=${searchTerm}`; break; default: searchUrl = `https://www.google.ru/search?q=${searchTerm}`;
+                } window.open(searchUrl, '_blank');
+            }
+        </script>
+    </body>
+</html>
